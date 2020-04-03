@@ -1,0 +1,5 @@
+conda create --name fin-mod --clone base
+conda activate fin-mod
+pip install lhsmdu
+pip install --upgrade pyDOE
+conda install -c anaconda tensorflow

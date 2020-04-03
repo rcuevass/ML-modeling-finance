@@ -1,0 +1,9 @@
+# logs
+logs/*.log
+logs/*.log.*
+
+# pycache
+src/utils/__pycache__
+
+# data
+data/output/*.csv
