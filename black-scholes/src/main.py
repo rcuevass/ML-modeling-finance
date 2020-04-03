@@ -32,7 +32,7 @@ if __name__ == '__main__':
     log.info('Testing custom module for LHS...')
 
     # Generate dictionary with ranges of parameters
-    type_artificial_data = 'narrow'
+    type_artificial_data = 'realistic_like'
     dict_ranges = get_dictionary_ranges(type_range=type_artificial_data)
 
     log.info('Latin Hypercube Sampling with multi-dimensional uniformity...')
