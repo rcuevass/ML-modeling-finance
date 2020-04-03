@@ -5,16 +5,14 @@ from typing import List
 
 import tensorflow as tf
 import numpy as np
-import imageio
-import pandas as pd
+# to keep track of time for computations
+from timeit import default_timer as timer
 # for plotting
 import matplotlib.pyplot as plt
 # for logging
 from utils.logger import get_log_object
 
 log = get_log_object()
-
-    #plt.show()
 
 
 def plot_graphs(history: tf.keras.callbacks.History,
@@ -104,32 +102,35 @@ def evaluate_regression_model(model_: tf.keras.models.Sequential,
     """
 
     # compile and fit model....
+    log.info('Training model %s ', model_name)
+    start_time = timer()
     model_.compile(loss='mse', optimizer=tf.keras.optimizers.SGD(lr=1e-3))
 
     history = model_.fit(train_set[0], train_set[1],
                          validation_data=(test_set[0], test_set[1]),
                          epochs=num_epochs)
 
+    end_time = timer()
+
+    log.info('Training model %s took (seconds)=%s', model_name, end_time-start_time)
+
     # then evaluate on test set
+    log.info('Evaluating model %s ', model_name)
+    start_time = timer()
     model_.evaluate(test_set[0], test_set[1], verbose=2)
+    end_time = timer()
+    log.info('Evaluating model %s took (seconds)=%s', model_name, end_time - start_time)
 
     # generate plots associated with models performance
-    ##############
-    ##############
+    log.info('Generating plot for model %s to assess its performance ', model_name)
     plot_graphs(history, plot_title=model_name,
                 location_plot=location_plot, string_metric='')
 
     # generate scatter plot
-
+    log.info('Generating scatter plot for model %s ', model_name)
     y_predicted = model_.predict(test_set[0])
     y_actual = test_set[1]
-
-    ############
-    ############
-
     generate_regression_scatter_plot(predicted_values=y_predicted,
                                      actual_values=y_actual,
                                      model_name=model_name,
                                      plot_location=location_plot)
-
-
