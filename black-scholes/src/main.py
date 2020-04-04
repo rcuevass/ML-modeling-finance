@@ -16,7 +16,7 @@ from timeit import default_timer as timer
 from utils.split_process_data import clean_split_df
 # to use TF2 and all customized functions associated with it
 from utils.dl_models_definition import regression_model_01, regression_model_02,\
-    regression_model_03, regression_model_04, regression_model_05
+    regression_model_03, regression_model_04, regression_model_05, regression_model_06
 from utils.train_evaluate_model import evaluate_regression_model
 
 # instantiate log object
@@ -114,7 +114,10 @@ if __name__ == '__main__':
     log.info('creating dictionary of models')
     dictionary_models = dict({'model 01': regression_model_01(input_shape_=input_shape),
                               'model 02': regression_model_02(input_shape_=input_shape),
-                              'model 03': regression_model_05(input_shape_=input_shape)})
+                              'model 03': regression_model_03(input_shape_=input_shape),
+                              'model 04': regression_model_04(input_shape_=input_shape),
+                              'model 05': regression_model_05(input_shape_=input_shape),
+                              'model 06': regression_model_06(input_shape_=input_shape)})
 
     log.info('Looping over DL models...')
     for model_name in dictionary_models.keys():
