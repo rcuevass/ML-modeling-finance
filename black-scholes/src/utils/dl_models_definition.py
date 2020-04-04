@@ -33,7 +33,7 @@ def regression_model_02(input_shape_) -> tf.keras.models.Sequential:
                                          tf.keras.layers.Dense(25, activation='relu'),
                                          # hidden layer with relu activation function and 100 hidden units
                                          tf.keras.layers.Dense(50, activation='relu'),
-                                         tf.keras.layers.Dense(1),
+                                         tf.keras.layers.Dense(1)
                                          ])
     return model_
 
@@ -48,7 +48,7 @@ def regression_model_03(input_shape_) -> tf.keras.models.Sequential:
                                          tf.keras.layers.Dense(25, activation='relu'),
                                          # hidden layer with relu activation function and 100 hidden units
                                          tf.keras.layers.Dense(50, activation='relu'),
-                                         tf.keras.layers.Dense(1),
+                                         tf.keras.layers.Dense(1)
                                          ])
     return model_
 
@@ -63,7 +63,7 @@ def regression_model_04(input_shape_) -> tf.keras.models.Sequential:
                                          tf.keras.layers.Dense(25, activation='relu'),
                                          # hidden layer with relu activation function and 100 hidden units
                                          tf.keras.layers.Dense(50, activation='relu'),
-                                         tf.keras.layers.Dense(1),
+                                         tf.keras.layers.Dense(1)
                                          ])
     return model_
 
@@ -84,6 +84,24 @@ def regression_model_05(input_shape_) -> tf.keras.models.Sequential:
                                          tf.keras.layers.Dropout(0.2),
                                          # hidden layer with relu activation function and 100 hidden units
                                          tf.keras.layers.Dense(100, activation='relu'),
-                                         tf.keras.layers.Dense(1),
+                                         tf.keras.layers.Dense(1)
                                          ])
     return model_
+
+
+def regression_model_06(input_shape_) -> tf.keras.models.Sequential:
+    model_ = tf.keras.models.Sequential([tf.keras.layers.Dense(100,
+                                                               activation="relu",
+                                                               input_shape=input_shape_),
+                                         # hidden layer with relu activation and 100 hidden units,
+                                         tf.keras.layers.Dense(100, activation='relu'),
+                                         # hidden layer with relu activation function and 50 hidden units
+                                         tf.keras.layers.Dense(100, activation='relu'),
+                                         # hidden layer with relu activation function and 100 hidden units
+                                         tf.keras.layers.Dense(100, activation='relu'),
+                                         # hidden layer with relu activation function and 100 hidden units
+                                         tf.keras.layers.Dense(100, activation='relu'),
+                                         tf.keras.layers.Dense(1)
+                                         ])
+    return model_
+
